@@ -62,4 +62,5 @@
 ## Полеезные ссылки
 - [Как скачать git](https://www.youtube.com/watch?v=12BIw4GdGYQ).
 - [Как сделать или же получить токен бота](https://www.youtube.com/watch?v=uXl_Pi2tB2o&t=181s).
+- [Скачать Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
   
