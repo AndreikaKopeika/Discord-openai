@@ -1,8 +1,9 @@
 import random
 import openai
+import os
 
 # Установите свой API-ключ OpenAI
-openai.api_key = 'YOUR_OPENAI_API_KEY'  # Замените на свой ключ
+openai.api_key = os.getenv('OPENAI_API_KEY')  # Используйте переменную окружения для ключа API
 
 # Инициализация списка сообщений для общения с OpenAI
 messages = []
@@ -55,7 +56,7 @@ async def process_message_in_openai(message_content, author, time, event_type="m
     
     # Запрос к OpenAI API
     response = openai.ChatCompletion.create(
-        model="gpt-4",  # Убедитесь, что используете корректное название модели
+        model="gpt-4o-mini",  # Убедитесь, что используете корректное название модели
         messages=messages,
         max_tokens=600,
         temperature=random.uniform(0.1, 1.4),
