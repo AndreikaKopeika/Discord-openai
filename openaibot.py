@@ -2,8 +2,12 @@ import random
 import openai
 import os
 
+# Load environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
+
 # Установите свой API-ключ OpenAI
-openai.api_key = os.getenv('OPENAI_API_KEY')  # Используйте переменную окружения для ключа API
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Инициализация списка сообщений для общения с OpenAI
 messages = []
