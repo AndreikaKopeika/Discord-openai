@@ -19,7 +19,11 @@
 
 ## Как запустить/установить бота
 
-### Лучший способ скачать [установщик](https://github.com/AndreikaKopeika/Discord-openai/releases/download/installer2.0/auto_setupV2.0.bat) и запустить его. Он автоматически учтановит всё необходимое. Если этот способ не заработает то скорее всего ручной тоже. НО если вы хотите попробовать ручной вам понадобиться [git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
+### Лучший способ:
+1. Скачать [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe) и установить его (Вначале поставить галочку где написано про PATH)
+2. Скачать [установщик](https://github.com/AndreikaKopeika/Discord-openai/releases/download/installer2.0/auto_setupV2.0.bat) и запустить его. Он автоматически учтановит всё необходимое. 
+
+### Если этот способ не заработает то скорее всего ручной тоже. НО если вы хотите попробовать ручной вам понадобиться [git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
 
 ### Ручной способ (Для продвинутых)
 1. **Клонируйте репозиторий (нужен git):**
