@@ -22,7 +22,7 @@
    ```
 2. **Перейдите в директорию проекта:**
    ```bash
-   cd repo_name
+   cd Discord-openai
    ```
 3. Укажите свой токен Discord и API-ключ OpenAI в коде: Откройте файл bot.py и openaibot.py
  и замените 'YOUR_DISCORD_TOKEN' на ваш токен Discord и 'YOUR_OPENAI_API_KEY' на ваш API-ключ OpenAI:
@@ -36,7 +36,7 @@
    ```
 5. **Запустите бота:**
    ```bash
-   python main.py
+   python bot.py
    ```
 
 ## Конфигурация
