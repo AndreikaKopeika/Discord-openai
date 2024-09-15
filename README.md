@@ -15,11 +15,6 @@
 - `openai`
 - `asyncio`
 
-Чтобы установить зависимости, выполните следующую команду:
-```bash
-pip install discord.py openai asyncio
-
-
 ## Как запустить бота
 1. **Клонируйте репозиторий:**
    ```bash
@@ -36,7 +31,7 @@ pip install discord.py openai asyncio
    ```
 4. **Установите зависимости:**
    ```bash
-   pip install -r requirements.txt
+   pip install discord.py openai asyncio
    ```
 5. **Запустите бота:**
    ```bash
