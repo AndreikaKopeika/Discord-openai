@@ -5,19 +5,21 @@ REM Устанавливаем Git
 echo Installing Git...
 powershell -Command "Start-Process 'https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.1/Git-2.42.0-64-bit.exe' -ArgumentList '/VERYSILENT', '/NORESTART' -Wait"
 
-REM Перезапускаем консоль, чтобы обновить PATH для Git
-echo Restarting console to apply Git to PATH...
-start cmd /k "%~dp0\%~nx0"
-exit /b
+REM Проверяем установку Git
+git --version
+if %errorlevel% neq 0 (
+    echo Error: Git is not installed or not in PATH!
+    exit /b %errorlevel%
+)
 
 REM Устанавливаем Python
 echo Installing Python...
 powershell -Command "Start-Process 'https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe' -ArgumentList '/quiet', 'InstallAllUsers=1', 'PrependPath=1' -Wait"
 
-REM Проверяем установку Git
-git --version
+REM Проверяем установку Python
+python --version
 if %errorlevel% neq 0 (
-    echo Error: Git is not installed or not in PATH!
+    echo Error: Python is not installed or not in PATH!
     exit /b %errorlevel%
 )
 
@@ -35,13 +37,6 @@ if %errorlevel% neq 0 (
 )
 
 echo Setup done! Starting bot...
-
-REM Проверяем, установлен ли Python
-python --version
-if %errorlevel% neq 0 (
-    echo Error: Python is not installed or not in PATH!
-    exit /b %errorlevel%
-)
 
 REM Проверяем, что файл bot.py существует
 if not exist bot.py (
