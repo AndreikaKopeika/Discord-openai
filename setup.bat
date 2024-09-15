@@ -14,4 +14,5 @@ echo OPENAI_API_KEY=%OPENAI_API_KEY% >> .env
 
 echo .env file created.
 echo Setup complete.
-pause
+
+start run.bat
