@@ -54,4 +54,3 @@ pip install discord.py openai asyncio
 
 ## Контакты
 Если у вас есть вопросы, вы можете связаться с автором через Discord: `andk45`.
-```
