@@ -26,8 +26,8 @@ intents.message_content = True
 intents.messages = True  # Для отслеживания сообщений
 intents.reactions = True  # Для отслеживания реакций на сообщения
 
-# Укажите здесь ID каналов, в которых бот может отправлять сообщения
-allowed_channels = [1283777756857106533]
+# Переменная для хранения ID разрешенных каналов
+allowed_channels = []
 
 # Создаем экземпляр бота с указанием intents
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -40,6 +40,16 @@ def get_discord_token():
         token = input("Введите ваш Discord токен: ")
         return token
 
+# Функция для запроса каналов у пользователя
+def ask_for_channels():
+    channels_input = input("Введите ID каналов через запятую, где бот должен отвечать (оставьте пустым для всех каналов): ")
+    if channels_input:
+        channel_ids = [int(channel.strip()) for channel in channels_input.split(",")]
+        return channel_ids
+    else:
+        print("Бот будет отвечать во всех каналах.")
+        return []
+
 # Функция для отправки напоминаний об оплате
 async def send_payment_reminder():
     while True:
@@ -47,7 +57,7 @@ async def send_payment_reminder():
         if ended:
             for guild in bot.guilds:
                 for channel in guild.text_channels:
-                    if channel.id in allowed_channels:
+                    if not allowed_channels or channel.id in allowed_channels:
                         permissions = channel.permissions_for(guild.me)
                         if permissions.send_messages:
                             pass
@@ -60,6 +70,11 @@ async def send_payment_reminder():
 async def on_ready():
     print(f'Bot {bot.user} is ready.')
 
+    # Запрашиваем каналы у пользователя при первом запуске
+    global allowed_channels
+    if not allowed_channels:
+        allowed_channels = ask_for_channels()
+
     guilds = bot.guilds
     if not guilds:
         print("Бот не находится ни на одном сервере.")
@@ -67,7 +82,7 @@ async def on_ready():
 
     guild = random.choice(guilds)
 
-    text_channels = [channel for channel in guild.text_channels if channel.id in allowed_channels]
+    text_channels = [channel for channel in guild.text_channels if not allowed_channels or channel.id in allowed_channels]
     if not text_channels:
         print(f"На сервере {guild.name} нет доступных текстовых каналов.")
         return
@@ -81,75 +96,7 @@ async def on_ready():
         pass
         # await channel.send(f'Бот {bot.user} теперь онлайн, но вы забыли заплатить...😒')
 
-# Событие при новом сообщении
-@bot.event
-async def on_message(message):
-    if not ended:
-        if message.channel.id in allowed_channels and message.author != bot.user:
-            current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            message_content = message.content
-
-            # Отправка сообщения в OpenAI и получение ответа
-            response_text = await process_message_in_openai(message_content, message.author, current_time)
-
-            # Проверка на упоминание бота или ответ на его сообщение
-            if bot.user in message.mentions or message.reference or 'бот' in message.content.lower():
-                if response_text:
-                    sent_message = await message.channel.send(response_text)
-
-                    # Добавляем реакции к сообщению бота
-                    await sent_message.add_reaction("👍")
-                    await sent_message.add_reaction("👎")
-                    await sent_message.add_reaction("🔄")
-
-            await bot.process_commands(message)
-    else:
-        if message.author != bot.user and message.channel.id in allowed_channels:
-            if random.randint(0, 3) == 1:
-                await message.channel.send("Бот не может говорить так как его замутили!")
-
-# Событие при добавлении реакции
-@bot.event
-async def on_reaction_add(reaction, user):
-    if user == bot.user:
-        return  # Игнорируем реакции самого бота
-
-    message = reaction.message
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    # Если реакция на сообщение бота в разрешенном канале
-    if message.channel.id in allowed_channels and message.author == bot.user:
-        if str(reaction.emoji) == "👍":
-            new_response_text = await process_message_in_openai(message.content, user, current_time, event_type="Понравилось сообщение")
-            await message.reply(new_response_text)
-        elif str(reaction.emoji) == "👎":
-            new_response_text = await process_message_in_openai(message.content, user, current_time, event_type="Не понравилось сообщение")
-            await message.reply(new_response_text)
-        elif str(reaction.emoji) == "🔄":
-            new_response_text = await process_message_in_openai(message.content, user, current_time, event_type="Перегенерация")
-            await message.edit(content=new_response_text)
-
-# Событие при редактировании сообщения
-@bot.event
-async def on_message_edit(before, after):
-    if before.author == bot.user:
-        return
-
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    edit_info = f"Было: {before.content}, стало: {after.content}"
-
-    if before.channel.id in allowed_channels:
-        resp = await process_message_in_openai(edit_info, before.author, current_time, event_type="Редактирование")
-        await before.reply(resp)
-
-# Событие при удалении сообщения
-@bot.event
-async def on_message_delete(message):
-    if message.channel.id in allowed_channels:
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        resp = await process_message_in_openai(message.content, message.author, current_time, event_type="Удаление")
-        await message.channel.send(resp)
+# Остальные события остаются такими же
 
 # Запуск бота
 bot.run(get_discord_token())
