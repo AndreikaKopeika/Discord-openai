@@ -18,7 +18,7 @@
 ### Необходимо ещё установить git. Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
 
 ## Как запустить/установить бота
-### Видео с первым способом:
+### Видео с первым/лучшим способом:
 https://github.com/user-attachments/assets/a303643f-446e-4d77-ab1e-6ee14eb3d236
 
 ### Лучший способ:
