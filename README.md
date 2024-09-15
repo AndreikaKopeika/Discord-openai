@@ -18,6 +18,8 @@
 ### Необходимо ещё установить git. Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
 
 ## Как запустить/установить бота
+### Видео с первым способом:
+https://github.com/user-attachments/assets/a303643f-446e-4d77-ab1e-6ee14eb3d236
 
 ### Лучший способ:
 1. Скачать [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe) и установить его (Вначале поставить галочку где написано про PATH)
@@ -27,6 +29,7 @@
 ### Если этот способ не заработает то скорее всего ручной тоже. НО если вы хотите попробовать ручной вам понадобиться [git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
 
 ### Ручной способ (Для продвинутых)
+
 1. **Клонируйте репозиторий (нужен git):**
    ```bash
    git clone https://github.com/AndreikaKopeika/Discord-openai.git
