@@ -5,27 +5,20 @@ import random
 import asyncio
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 
-# Импортируйте функцию из openaibot.py
-from openaibot import process_message_in_openai
+# Load environment variables from .env file
+load_dotenv()
+
+# Get tokens from environment variables
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+# Настройка OpenAI
+openai.api_key = OPENAI_API_KEY
 
 # Флаг для отключения бота
 ended = False
-
-# Настройка OpenAI
-openai.api_key = 'YOUR_OPENAI_API_KEY'  # Замените на свой ключ OpenAI
-
-# Функция для получения токена из файла или запроса нового
-def get_discord_token():
-    token_file = 'discord_token.txt'
-    if os.path.exists(token_file):
-        with open(token_file, 'r') as file:
-            return file.read().strip()
-    else:
-        token = input("Введите ваш Discord токен: ")
-        with open(token_file, 'w') as file:
-            file.write(token)
-        return token
 
 # Создаем объект Intents для отслеживания сообщений и реакций
 intents = discord.Intents.default()
@@ -38,6 +31,14 @@ allowed_channels = [1283777756857106533]
 
 # Создаем экземпляр бота с указанием intents
 bot = commands.Bot(command_prefix='!', intents=intents)
+
+# Функция для получения токена из файла или запроса нового
+def get_discord_token():
+    if DISCORD_TOKEN:
+        return DISCORD_TOKEN
+    else:
+        token = input("Введите ваш Discord токен: ")
+        return token
 
 # Функция для отправки напоминаний об оплате
 async def send_payment_reminder():
