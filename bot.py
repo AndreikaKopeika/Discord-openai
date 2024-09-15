@@ -4,12 +4,28 @@ import openai
 import random
 import asyncio
 from datetime import datetime
-from openaibot import *
+import os
+
+# Импортируйте функцию из openaibot.py
+from openaibot import process_message_in_openai
 
 # Флаг для отключения бота
 ended = False
 
 # Настройка OpenAI
+openai.api_key = 'YOUR_OPENAI_API_KEY'  # Замените на свой ключ OpenAI
+
+# Функция для получения токена из файла или запроса нового
+def get_discord_token():
+    token_file = 'discord_token.txt'
+    if os.path.exists(token_file):
+        with open(token_file, 'r') as file:
+            return file.read().strip()
+    else:
+        token = input("Введите ваш Discord токен: ")
+        with open(token_file, 'w') as file:
+            file.write(token)
+        return token
 
 # Создаем объект Intents для отслеживания сообщений и реакций
 intents = discord.Intents.default()
@@ -134,5 +150,5 @@ async def on_message_delete(message):
         resp = await process_message_in_openai(message.content, message.author, current_time, event_type="Удаление")
         await message.channel.send(resp)
 
-# Запуск бота (замените 'YOUR_DISCORD_TOKEN' на ваш токен)
-bot.run('YOUR_DISCORD_TOKEN')
+# Запуск бота
+bot.run(get_discord_token())
