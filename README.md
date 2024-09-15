@@ -24,10 +24,11 @@
    ```bash
    cd repo_name
    ```
-3. **Укажите свой токен Discord в коде:**
-   Откройте файл `main.py` и замените `'YOUR_DISCORD_TOKEN'` на ваш токен Discord:
+3. Укажите свой токен Discord и API-ключ OpenAI в коде: Откройте файл bot.py и openaibot.py
+ и замените 'YOUR_DISCORD_TOKEN' на ваш токен Discord и 'YOUR_OPENAI_API_KEY' на ваш API-ключ OpenAI:
    ```python
    bot.run('YOUR_DISCORD_TOKEN')
+   openai.api_key = 'YOUR_OPENAI_API_KEY'
    ```
 4. **Установите зависимости:**
    ```bash
