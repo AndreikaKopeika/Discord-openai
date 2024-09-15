@@ -15,9 +15,13 @@
 - `openai`
 - `python-dotenv`
 
-### Необходимо ещё установить git. Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
+### Необходимо ещё установить git (для всех способов). Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
 
-## Как запустить бота
+## Как запустить/установить бота
+
+### Лучший способ скачать [установщик](https://github.com/AndreikaKopeika/Discord-openai/releases/download/installer/auto_setup.bat) и запустить его. Если этот способ не заработает то скорее всего ручной тоже.
+
+### Ручной способ (Для продвинутых)
 1. **Клонируйте репозиторий (нужен git):**
    ```bash
    git clone https://github.com/AndreikaKopeika/Discord-openai.git
