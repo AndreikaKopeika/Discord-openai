@@ -18,7 +18,7 @@
 ## Как запустить бота
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com/username/repo_name.git
+   git clone https://github.com/AndreikaKopeika/Discord-openai.git
    ```
 2. **Перейдите в директорию проекта:**
    ```bash
