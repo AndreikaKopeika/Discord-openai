@@ -1,7 +1,3 @@
-Обновим README, чтобы включить инструкции по созданию и запуску `setup.bat`. Этот файл будет запрашивать у пользователя токены и устанавливать зависимости.
-
----
-
 # Discord Bot с интеграцией OpenAI
 
 ## Описание проекта
@@ -19,8 +15,10 @@
 - `openai`
 - `python-dotenv`
 
+### Необходимо ещё установить git. Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
+
 ## Как запустить бота
-1. **Клонируйте репозиторий:**
+1. **Клонируйте репозиторий (нужен git):**
    ```bash
    git clone https://github.com/AndreikaKopeika/Discord-openai.git
    ```
