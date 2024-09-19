@@ -15,33 +15,35 @@
 - `openai`
 - `python-dotenv`
 
-### Необходимо ещё установить git. Для windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
+Также необходимо установить Git (для Windows) и Python.
+
+### Установка Git
+Для Windows можно скачать установщик по [этой](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) ссылке.
+
+### Установка Python
+Скачать [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe) и установить его (обязательно установить галочку, чтобы добавить Python в PATH).
 
 ## Как запустить/установить бота
-### Видео с первым/лучшим способом:
-https://github.com/user-attachments/assets/a303643f-446e-4d77-ab1e-6ee14eb3d236
 
-### Лучший способ:
-1. Скачать [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe) и установить его (Вначале поставить галочку где написано про PATH)
-2. Скачать [git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и установить (просто нажимаем всё время next)
-3. Скачать [установщик](https://github.com/AndreikaKopeika/Discord-openai/releases/download/installer2.3/auto_setupV2.3.bat) и запустить его. Он автоматически учтановит всё необходимое. 
+### Для Windows
 
-### Если этот способ не заработает то скорее всего ручной тоже. НО если вы хотите попробовать ручной вам понадобиться [git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
+1. **Скачать и установить Git и Python:**
+   - Установите [Git](https://github.com/git-for-windows/git/releases/download/v2.46.0.windows.1/Git-2.46.0-64-bit.exe) и [Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe).
 
-### Ручной способ (Для продвинутых)
-
-1. **Клонируйте репозиторий (нужен git):**
+2. **Клонируйте репозиторий:**
+   Откройте командную строку и выполните:
    ```bash
    git clone https://github.com/AndreikaKopeika/Discord-openai.git
    ```
-2. **Перейдите в директорию проекта:**
+   Перейдите в директорию проекта:
    ```bash
    cd Discord-openai
    ```
+
 3. **Запустите файл `setup.bat`:**
    В Windows, двойным щелчком или через командную строку:
    ```bash
-   start setup.bat
+   setup.bat
    ```
    Этот скрипт:
    - Установит необходимые зависимости.
@@ -50,6 +52,40 @@ https://github.com/user-attachments/assets/a303643f-446e-4d77-ab1e-6ee14eb3d236
 4. **Запустите бота:**
    ```bash
    python bot.py
+   ```
+
+### Для Linux
+
+1. **Установите Python и Git:**
+   - Установите Python и Git через ваш пакетный менеджер. Например, для Debian/Ubuntu:
+     ```bash
+     sudo apt update
+     sudo apt install python3 python3-pip git
+     ```
+
+2. **Клонируйте репозиторий:**
+   ```bash
+   git clone https://github.com/AndreikaKopeika/Discord-openai.git
+   ```
+
+3. **Перейдите в директорию проекта:**
+   ```bash
+   cd Discord-openai
+   ```
+
+4. **Запустите файл `setup.sh`:**
+   Убедитесь, что файл `setup.sh` существует в репозитории, и выполните:
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
+   Этот скрипт:
+   - Установит необходимые зависимости.
+   - Создаст файл `.env`, если он не существует, и запросит у вас токены.
+
+5. **Запустите бота:**
+   ```bash
+   python3 bot.py
    ```
 
 ## Конфигурация
@@ -71,8 +107,7 @@ https://github.com/user-attachments/assets/a303643f-446e-4d77-ab1e-6ee14eb3d236
 * Нажмите кнопку «Создать новый секретный ключ» и дайте ключу имя (оно может быть любым);
 * Скопируйте ключ API, созданный для вашего ключа.
 
-## Полеезные ссылки
+## Полезные ссылки
 - [Как скачать git](https://www.youtube.com/watch?v=12BIw4GdGYQ).
 - [Как сделать или же получить токен бота](https://www.youtube.com/watch?v=uXl_Pi2tB2o&t=181s).
 - [Скачать Python](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
-  
