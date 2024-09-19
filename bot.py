@@ -74,7 +74,7 @@ async def on_ready():
         # await channel.send(f'Бот {bot.user} теперь онлайн, но вы забыли заплатить...😒')
 
 @bot.command()
-async def help(ctx):
+async def bot_help(ctx):
     """Display a list of available commands."""
     help_text = (
         "**Available Commands:**\n"
