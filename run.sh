@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Запуск Python-скрипта
-python bot.py
+python3 bot.py
