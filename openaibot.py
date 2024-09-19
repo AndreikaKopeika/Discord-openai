@@ -59,7 +59,7 @@ async def process_message_in_openai(message_content, author, time, event_type="m
     })
     
     # Запрос к OpenAI API
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-4o-mini",  # Убедитесь, что используете корректное название модели
         messages=messages,
         max_tokens=600,
@@ -68,5 +68,5 @@ async def process_message_in_openai(message_content, author, time, event_type="m
     )
     
     # Получение ответа
-    response_text = response.choices[0].message['content']
+    response_text = response.choices[0].message.content
     return response_text
