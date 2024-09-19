@@ -6,7 +6,7 @@ import asyncio
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-from openaibot import process_message_in_opena
+from openaibot import process_message_in_openai
 
 # Load environment variables from .env file
 load_dotenv()
