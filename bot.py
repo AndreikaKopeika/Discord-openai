@@ -5,7 +5,7 @@ import random
 import asyncio
 from datetime import datetime
 import os
-from dotenv import load_dotenvа
+from dotenv import load_dotenv
 from openaibot import process_message_in_opena
 
 # Load environment variables from .env file
