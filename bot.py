@@ -101,13 +101,22 @@ async def on_message(message):
             message_content = message.content
 
             # Отправка в OpenAI и получение ответа
-            response_text = await process_message_in_openai(message_content, message.author, current_time)
-
+            
             # Проверка на упоминание бота или ответ на его сообщение
             if bot.user in message.mentions or message.reference or 'бот' in message.content.lower(): 
+                
+                # Если есть ответ на другое сообщение
+                if message.reference:
+                    referenced_message = await message.channel.fetch_message(message.reference.message_id)
+                    referenced_author = referenced_message.author
+                    referenced_content = referenced_message.content
+                    response_text = await process_message_in_openai(message_content, message.author, current_time, event_type=f'reply to {referenced_content} by {referenced_author}')
+                else:
+                    response_text = await process_message_in_openai(message_content, message.author, current_time)
+
                 if response_text:
                     sent_message = await message.channel.send(response_text)
-                    
+
                     # Добавляем реакции к сообщению бота
                     await sent_message.add_reaction("👍")
                     await sent_message.add_reaction("👎")
