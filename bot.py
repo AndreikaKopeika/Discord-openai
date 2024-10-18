@@ -29,7 +29,7 @@ intents.reactions = True
 intents.members = True
 
 # Укажите здесь ID каналов, в которых бот может отправлять сообщения
-allowed_channels = [1271726524919447604, 1271726702292238437, 1271726752003133460]
+allowed_channels = [1283777756857106533]
 
 # Создаем экземпляр бота с указанием intents
 bot = commands.Bot(command_prefix='!', intents=intents)
